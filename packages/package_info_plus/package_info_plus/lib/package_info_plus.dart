@@ -38,15 +38,26 @@ class PackageInfo {
       return _fromPlatform!;
     }
 
-    final platformData = await PackageInfoPlatform.instance.getAll();
-    _fromPlatform = PackageInfo(
-      appName: platformData.appName,
-      packageName: platformData.packageName,
-      version: platformData.version,
-      buildNumber: platformData.buildNumber,
-      buildSignature: platformData.buildSignature,
-      installerStore: platformData.installerStore,
-    );
+    try {
+      final platformData = await PackageInfoPlatform.instance.getAll();
+      _fromPlatform = PackageInfo(
+        appName: platformData.appName,
+        packageName: platformData.packageName,
+        version: platformData.version,
+        buildNumber: platformData.buildNumber,
+        buildSignature: platformData.buildSignature,
+        installerStore: platformData.installerStore,
+      );
+    } catch (e) {
+      _fromPlatform = PackageInfo(
+        appName: "",
+        packageName: "",
+        version: "",
+        buildNumber: "",
+        buildSignature: "",
+        installerStore: "",
+      );
+    }
     return _fromPlatform!;
   }
 
