@@ -46,16 +46,14 @@ class PackageInfo {
         version: platformData.version,
         buildNumber: platformData.buildNumber,
         buildSignature: platformData.buildSignature,
-        installerStore: platformData.installerStore,
       );
     } catch (e) {
       _fromPlatform = PackageInfo(
-        appName: "",
-        packageName: "",
-        version: "",
-        buildNumber: "",
+        appName: "app_name",
+        packageName: "package_name",
+        version: "0.0.0",
+        buildNumber: "0",
         buildSignature: "",
-        installerStore: "",
       );
     }
     return _fromPlatform!;
